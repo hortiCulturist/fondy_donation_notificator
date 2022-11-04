@@ -1,0 +1,18 @@
+[Unit]
+Description=fondy_donation_notificator
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/fondy_donation_notificator/
+ExecStart=/home/fondy_donation_notificator/env/bin/python3 app.py
+RestartSec=10
+Restart=on-failure
+
+StandardOutput=append:/home/fondy_donation_notificator/log_output.log
+StandardError=append:/home/fondy_donation_notificator/log_error.log
+
+[Install]
+WantedBy=multi-user.target
